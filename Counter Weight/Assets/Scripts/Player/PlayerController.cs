@@ -30,10 +30,22 @@ namespace CounterWeight.Player
 
         private void Move()
         {
+            // Get input for movement
             Vector2 moveInput = playerControls.Gameplay.Move.ReadValue<Vector2>();
-            Vector3 moveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
-            Quaternion cameraRotation = Camera.main.transform.rotation;
-            transform.position += cameraRotation * moveDirection * moveSpeed * Time.deltaTime;
+            float horizontalInput = moveInput.x;
+            float verticalInput = moveInput.y;
+
+            // Calculate movement direction relative to camera
+            Vector3 cameraForward = Camera.main.transform.forward;
+            Vector3 cameraRight = Camera.main.transform.right;
+            cameraForward.y = 0f;
+            cameraRight.y = 0f;
+            cameraForward.Normalize();
+            cameraRight.Normalize();
+            Vector3 moveDirection = cameraForward * verticalInput + cameraRight * horizontalInput;
+
+            // Apply movement
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
         }
     }
 }
