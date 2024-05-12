@@ -44,6 +44,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KeyT"",
+                    ""type"": ""Button"",
+                    ""id"": ""89fd170a-d94d-4f6b-838f-967176bf7a57"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KeyY"",
+                    ""type"": ""Button"",
+                    ""id"": ""9536b6a9-8fd3-42fe-aa52-27f9b966e1c0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +130,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04c3d4e5-a888-40a5-83b8-d97f6a1c606d"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyT"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d793202-1e31-4329-acf4-43f7cb5418dd"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +162,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_KeyT = m_Gameplay.FindAction("KeyT", throwIfNotFound: true);
+        m_Gameplay_KeyY = m_Gameplay.FindAction("KeyY", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,12 +227,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Interact;
+    private readonly InputAction m_Gameplay_KeyT;
+    private readonly InputAction m_Gameplay_KeyY;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+        public InputAction @KeyT => m_Wrapper.m_Gameplay_KeyT;
+        public InputAction @KeyY => m_Wrapper.m_Gameplay_KeyY;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -206,6 +252,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @KeyT.started += instance.OnKeyT;
+            @KeyT.performed += instance.OnKeyT;
+            @KeyT.canceled += instance.OnKeyT;
+            @KeyY.started += instance.OnKeyY;
+            @KeyY.performed += instance.OnKeyY;
+            @KeyY.canceled += instance.OnKeyY;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -216,6 +268,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @KeyT.started -= instance.OnKeyT;
+            @KeyT.performed -= instance.OnKeyT;
+            @KeyT.canceled -= instance.OnKeyT;
+            @KeyY.started -= instance.OnKeyY;
+            @KeyY.performed -= instance.OnKeyY;
+            @KeyY.canceled -= instance.OnKeyY;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -237,5 +295,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnKeyT(InputAction.CallbackContext context);
+        void OnKeyY(InputAction.CallbackContext context);
     }
 }

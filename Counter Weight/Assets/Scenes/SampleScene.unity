@@ -491,9 +491,26 @@ PrefabInstance:
       value: Living Room
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -8700617353114198275, guid: d9a90ad6340f9ab468cdee2084f2cc10, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -2800599746514691067, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762217128}
+    - targetCorrespondingSourceObject: {fileID: -2800599746514691067, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762217131}
+    - targetCorrespondingSourceObject: {fileID: -2800599746514691067, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762217130}
+    - targetCorrespondingSourceObject: {fileID: -2800599746514691067, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762217129}
   m_SourcePrefab: {fileID: 100100000, guid: d9a90ad6340f9ab468cdee2084f2cc10, type: 3}
 --- !u!1 &1593788580
 GameObject:
@@ -540,7 +557,104 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a482e9b38aa1047a60b9da072d40c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  moveSpeed: 2
+  inspect: {fileID: 11400000, guid: 420a84d5dfa6f5a4c95cffef5c2e9ec6, type: 2}
+  interact: {fileID: 11400000, guid: 73ca3381192b42b4991d7aa9843bb0af, type: 2}
+--- !u!1 &1762217124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2800599746514691067, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+    type: 3}
+  m_PrefabInstance: {fileID: 947192433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1762217128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762217124}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.37145597, y: 0.37145594, z: 0.3060735}
+  m_Center: {x: 2.0268402e-24, y: -0.00000003651231, z: 0.15314375}
+--- !u!114 &1762217129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762217124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a1a6b662dbb38459d86ecd6099e8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1762217130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762217124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b8bb5211bab7945871c2aeaa4cbd68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 73ca3381192b42b4991d7aa9843bb0af, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1762217129}
+        m_TargetAssemblyTypeName: test, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1762217131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762217124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b8bb5211bab7945871c2aeaa4cbd68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 420a84d5dfa6f5a4c95cffef5c2e9ec6, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1762217129}
+        m_TargetAssemblyTypeName: test, Assembly-CSharp
+        m_MethodName: Inspect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2135354691
 GameObject:
   m_ObjectHideFlags: 0
