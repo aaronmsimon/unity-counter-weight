@@ -67,7 +67,7 @@ namespace CounterWeight.Player
                 {
                     for (int i = 0; i < interactions.Interactables.Length; i++)
                     {
-                        interactionMenu.AddButton(interactions.Interactables[i].GetType().Name);
+                        interactionMenu.AddButton(interactions.Interactables[i]);
                     }
                     openInteractMenuEventHandler.Raise();
                 }

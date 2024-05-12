@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using CounterWeight.InteractionSystem;
 
 namespace CounterWeight.UI
 {
@@ -8,11 +9,12 @@ namespace CounterWeight.UI
     {
         [SerializeField] private Button buttonPrefab;
 
-        public void AddButton(string buttonText)
+        public void AddButton(IInteractable interactable)
         {
             TextMeshProUGUI label = buttonPrefab.GetComponentInChildren<TextMeshProUGUI>();
-            label.text = buttonText;
-            Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, this.transform);
+            label.text = interactable.GetType().Name;
+            Button button = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, this.transform);
+            button.onClick.AddListener(interactable.Interact);
         }
     }
 }
