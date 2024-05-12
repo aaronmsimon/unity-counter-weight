@@ -9,7 +9,11 @@ namespace CounterWeight.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float moveSpeed;
+        [SerializeField] private float interactRange;
+        [SerializeField] private bool showInteractRange;
         [SerializeField] private GameEvent openInteractMenuEventHandler;
+        [SerializeField] private GameEvent showInteractPromptEventHandler;
+        [SerializeField] private GameEvent hideInteractPromptEventHandler;
         [SerializeField] private InteractionMenu interactionMenu;
 
         private PlayerControls playerControls;
@@ -36,6 +40,7 @@ namespace CounterWeight.Player
         private void Update()
         {
             Move();
+            CheckForInteractables();
         }
 
         private void Move()
@@ -58,8 +63,21 @@ namespace CounterWeight.Player
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
         }
 
+        private void CheckForInteractables()
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.TryGetComponent(out Interactions interactions))
+                {
+                    showInteractPromptEventHandler.Raise();
+                    return;
+                }
+            }            
+            hideInteractPromptEventHandler.Raise();
+        }
+
         private void CheckCollisions(InputAction.CallbackContext context) {
-            float interactRange = 2f;
             Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
             foreach (Collider collider in colliders)
             {
@@ -71,6 +89,14 @@ namespace CounterWeight.Player
                     }
                     openInteractMenuEventHandler.Raise();
                 }
+            }
+        }
+
+        private void OnDrawGizmos() {
+            Gizmos.color = Color.red;
+            if (showInteractRange)
+            {
+                Gizmos.DrawWireSphere(transform.position, interactRange);
             }
         }
     }
