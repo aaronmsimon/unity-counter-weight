@@ -4,7 +4,7 @@ namespace CounterWeight.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float speed;
+        [SerializeField] private float moveSpeed;
 
         private PlayerControls playerControls;
 
@@ -31,7 +31,9 @@ namespace CounterWeight.Player
         private void Move()
         {
             Vector2 moveInput = playerControls.Gameplay.Move.ReadValue<Vector2>();
-            transform.position += new Vector3(moveInput.x, 0f, moveInput.y) * speed * Time.deltaTime;
+            Vector3 moveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
+            Quaternion cameraRotation = Camera.main.transform.rotation;
+            transform.position += cameraRotation * moveDirection * moveSpeed * Time.deltaTime;
         }
     }
 }
