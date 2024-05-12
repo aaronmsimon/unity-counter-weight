@@ -1,4 +1,5 @@
-using System;
+using CounterWeight.InteractionSystem;
+using CounterWeight.UI;
 using RoboRyanTron.Unite2017.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,8 +9,8 @@ namespace CounterWeight.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float moveSpeed;
-        [SerializeField] private GameEvent inspect;
-        [SerializeField] private GameEvent interact;
+        [SerializeField] private GameEvent openInteractMenuEventHandler;
+        [SerializeField] private InteractionMenu interactionMenu;
 
         private PlayerControls playerControls;
 
@@ -22,20 +23,14 @@ namespace CounterWeight.Player
         {
             playerControls.Enable();
 
-            // temp
             playerControls.Gameplay.Interact.performed += CheckCollisions;
-            playerControls.Gameplay.KeyT.performed += Interact;
-            playerControls.Gameplay.KeyY.performed += Inspect;
         }
 
         private void OnDisable()
         {
             playerControls.Disable();
 
-            // temp
             playerControls.Gameplay.Interact.performed -= CheckCollisions;
-            playerControls.Gameplay.KeyT.performed -= Interact;
-            playerControls.Gameplay.KeyY.performed -= Inspect;
         }
 
         private void Update()
@@ -63,25 +58,18 @@ namespace CounterWeight.Player
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
         }
 
-        // temporary
-        private void Inspect(InputAction.CallbackContext context)
-        {
-            inspect.Raise();
-        }
-        private void Interact(InputAction.CallbackContext context)
-        {
-            interact.Raise();
-        }
         private void CheckCollisions(InputAction.CallbackContext context) {
             float interactRange = 2f;
             Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
             foreach (Collider collider in colliders)
             {
-                if (collider.TryGetComponent(out GameEventListener listener))
+                if (collider.TryGetComponent(out Interactions interactions))
                 {
-                    foreach (GameEventListener action in listener.GetComponents<GameEventListener>()) {
-                        Debug.Log(action.Event.name);
+                    for (int i = 0; i < interactions.Interactables.Length; i++)
+                    {
+                        interactionMenu.AddButton(interactions.Interactables[i].GetType().Name);
                     }
+                    openInteractMenuEventHandler.Raise();
                 }
             }
         }
