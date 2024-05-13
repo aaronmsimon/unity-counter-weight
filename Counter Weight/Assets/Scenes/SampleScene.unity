@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e9d8bf991b324791ed6d6620690c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
   buttonPrefab: {fileID: 6339523792464898207, guid: ae16946be8b07094a8f813d68f8dff87,
     type: 3}
 --- !u!1 &75034301
@@ -911,10 +912,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1173076757}
-    - targetCorrespondingSourceObject: {fileID: -8114006901350506661, guid: d9a90ad6340f9ab468cdee2084f2cc10,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1173076755}
     - targetCorrespondingSourceObject: {fileID: -2800599746514691067, guid: d9a90ad6340f9ab468cdee2084f2cc10,
         type: 3}
       insertIndex: -1
@@ -923,14 +920,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1762217135}
-    - targetCorrespondingSourceObject: {fileID: -2800599746514691067, guid: d9a90ad6340f9ab468cdee2084f2cc10,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1762217137}
-    - targetCorrespondingSourceObject: {fileID: -2800599746514691067, guid: d9a90ad6340f9ab468cdee2084f2cc10,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1762217136}
   m_SourcePrefab: {fileID: 100100000, guid: d9a90ad6340f9ab468cdee2084f2cc10, type: 3}
 --- !u!1 &1026116087
 GameObject:
@@ -942,6 +931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1026116088}
   - component: {fileID: 1026116089}
+  - component: {fileID: 1026116092}
   - component: {fileID: 1026116091}
   - component: {fileID: 1026116090}
   m_Layer: 5
@@ -1054,24 +1044,40 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1026116092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026116087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b8bb5211bab7945871c2aeaa4cbd68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: d2ca87fb2b32e804bb4fe8ccc99a32b9, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 71448282}
+        m_TargetAssemblyTypeName: CounterWeight.ShowHide, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1173076751 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8114006901350506661, guid: d9a90ad6340f9ab468cdee2084f2cc10,
     type: 3}
   m_PrefabInstance: {fileID: 947192433}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1173076755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173076751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb90c8c096d578489eb4373c4c971a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1173076756
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1102,10 +1108,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1173076751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eb7fdf3cc3682046bfbeea583560955, type: 3}
+  m_Script: {fileID: 11500000, guid: d25f47207c3ae0d4d99c545cd7ceecb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  response: 
+  inspectResponse: 
+  skills:
+  - {fileID: 11400000, guid: 236c697437a6a95459bdd828ebab0659, type: 2}
+  interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
 --- !u!1 &1593788580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1593788581}
   - component: {fileID: 1593788582}
+  - component: {fileID: 1593788583}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1154,13 +1164,28 @@ MonoBehaviour:
   moveSpeed: 2
   interactRange: 0.75
   showInteractRange: 0
-  openInteractMenuEventHandler: {fileID: 11400000, guid: e495261bc7d4dfb4f825c8994c0ca70e,
+  showInteractMenuEventHandler: {fileID: 11400000, guid: e495261bc7d4dfb4f825c8994c0ca70e,
+    type: 2}
+  hideInteractMenuEventHandler: {fileID: 11400000, guid: d2ca87fb2b32e804bb4fe8ccc99a32b9,
     type: 2}
   showInteractPromptEventHandler: {fileID: 11400000, guid: b34d1510b3f896e448fa0871cae4a883,
     type: 2}
   hideInteractPromptEventHandler: {fileID: 11400000, guid: 6217a0ada760613438f3e9c877ffc8de,
     type: 2}
-  interactionMenu: {fileID: 71448283}
+--- !u!114 &1593788583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593788580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e8668b86ab57147bdce1ff9b555721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 11400000, guid: 1eb5b19f1413bdc41b16dc3d7d17405c, type: 2}
 --- !u!1 &1721617693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,35 +1356,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1762217124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eb7fdf3cc3682046bfbeea583560955, type: 3}
+  m_Script: {fileID: 11500000, guid: d25f47207c3ae0d4d99c545cd7ceecb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  response: The pot does not have a plant in it.
---- !u!114 &1762217136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762217124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb90c8c096d578489eb4373c4c971a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1762217137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762217124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5080e98c24e8384eb9ed3da1139bd96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  response: You picked up the pot
+  inspectResponse: 
+  skills:
+  - {fileID: 11400000, guid: 38ec6a93e027ef14c85157db0f0f088d, type: 2}
+  interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
 --- !u!1 &2135354691
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+// using CounterWeight.InteractionSystem;
 using CounterWeight.InteractionSystem;
 using CounterWeight.UI;
 using RoboRyanTron.Unite2017.Events;
@@ -11,10 +12,11 @@ namespace CounterWeight.Player
         [SerializeField] private float moveSpeed;
         [SerializeField] private float interactRange;
         [SerializeField] private bool showInteractRange;
-        [SerializeField] private GameEvent openInteractMenuEventHandler;
+        [SerializeField] private GameEvent showInteractMenuEventHandler;
+        [SerializeField] private GameEvent hideInteractMenuEventHandler;
         [SerializeField] private GameEvent showInteractPromptEventHandler;
         [SerializeField] private GameEvent hideInteractPromptEventHandler;
-        [SerializeField] private InteractionMenu interactionMenu;
+        // [SerializeField] private InteractionMenu interactionMenu;
 
         private PlayerControls playerControls;
 
@@ -27,14 +29,16 @@ namespace CounterWeight.Player
         {
             playerControls.Enable();
 
-            playerControls.Gameplay.Interact.performed += CheckCollisions;
+            // playerControls.Gameplay.Interact.performed += CheckCollisions;
+            playerControls.Gameplay.Interact.performed += Interact;
         }
 
         private void OnDisable()
         {
             playerControls.Disable();
 
-            playerControls.Gameplay.Interact.performed -= CheckCollisions;
+            // playerControls.Gameplay.Interact.performed -= CheckCollisions;
+            playerControls.Gameplay.Interact.performed -= Interact;
         }
 
         private void Update()
@@ -68,26 +72,42 @@ namespace CounterWeight.Player
             Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
             foreach (Collider collider in colliders)
             {
-                if (collider.TryGetComponent(out Interactions interactions))
+                if (collider.TryGetComponent(out Interactable interactable))
                 {
+                    interactable.UpdateInteractionsList();
                     showInteractPromptEventHandler.Raise();
                     return;
                 }
             }            
             hideInteractPromptEventHandler.Raise();
+            hideInteractMenuEventHandler.Raise();
         }
 
         private void CheckCollisions(InputAction.CallbackContext context) {
             Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
             foreach (Collider collider in colliders)
             {
-                if (collider.TryGetComponent(out Interactions interactions))
+                // if (collider.TryGetComponent(out Interactions interactions))
+                // {
+                //     for (int i = 0; i < interactions.Interactables.Length; i++)
+                //     {
+                //         interactionMenu.AddButton(interactions.Interactables[i]);
+                //     }
+                //     openInteractMenuEventHandler.Raise();
+                // }
+            }
+        }
+
+        private void Interact(InputAction.CallbackContext context) {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.TryGetComponent(out Interactable interactable))
                 {
-                    for (int i = 0; i < interactions.Interactables.Length; i++)
+                    for (int i = 0; i < interactable.Skills.Length; i++)
                     {
-                        interactionMenu.AddButton(interactions.Interactables[i]);
+                        showInteractMenuEventHandler.Raise();
                     }
-                    openInteractMenuEventHandler.Raise();
                 }
             }
         }
