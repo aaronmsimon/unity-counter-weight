@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using CounterWeight.InteractionSystem;
+using CounterWeight.Player;
+using RoboRyanTron.Unite2017.Variables;
+using RoboRyanTron.Unite2017.Events;
 
 namespace CounterWeight.UI
 {
@@ -9,6 +12,8 @@ namespace CounterWeight.UI
     {
         [SerializeField] private InteractionsList interactionsList;
         [SerializeField] private Button buttonPrefab;
+        [SerializeField] private GameEvent interaction;
+        [SerializeField] private StringVariable interactionName;
 
         private RectTransform rectTransform;
 
@@ -34,7 +39,7 @@ namespace CounterWeight.UI
                 TextMeshProUGUI label = buttonPrefab.GetComponentInChildren<TextMeshProUGUI>();
                 label.text = interactionText;
                 Button button = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, this.transform);
-                // button.onClick.AddListener(interactable.Interact);
+                button.onClick.AddListener(() => {interactionName.Value = interactionText;interaction.Raise();});
             }
         }
 

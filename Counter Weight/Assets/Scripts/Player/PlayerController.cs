@@ -1,7 +1,7 @@
-// using CounterWeight.InteractionSystem;
+using CounterWeight.Characters;
 using CounterWeight.InteractionSystem;
-using CounterWeight.UI;
 using RoboRyanTron.Unite2017.Events;
+using RoboRyanTron.Unite2017.Variables;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,12 +16,16 @@ namespace CounterWeight.Player
         [SerializeField] private GameEvent hideInteractMenuEventHandler;
         [SerializeField] private GameEvent showInteractPromptEventHandler;
         [SerializeField] private GameEvent hideInteractPromptEventHandler;
-        // [SerializeField] private InteractionMenu interactionMenu;
+        [SerializeField] private StringVariable interactionName;
+
+        private Skills skills;
 
         private PlayerControls playerControls;
 
         private void Awake()
         {
+            skills = GetComponent<Skills>();
+
             playerControls = new PlayerControls();
         }
 
@@ -29,7 +33,6 @@ namespace CounterWeight.Player
         {
             playerControls.Enable();
 
-            // playerControls.Gameplay.Interact.performed += CheckCollisions;
             playerControls.Gameplay.Interact.performed += Interact;
         }
 
@@ -37,7 +40,6 @@ namespace CounterWeight.Player
         {
             playerControls.Disable();
 
-            // playerControls.Gameplay.Interact.performed -= CheckCollisions;
             playerControls.Gameplay.Interact.performed -= Interact;
         }
 
@@ -83,18 +85,20 @@ namespace CounterWeight.Player
             hideInteractMenuEventHandler.Raise();
         }
 
-        private void CheckCollisions(InputAction.CallbackContext context) {
+        public void OnInteractable() {
             Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
             foreach (Collider collider in colliders)
             {
-                // if (collider.TryGetComponent(out Interactions interactions))
-                // {
-                //     for (int i = 0; i < interactions.Interactables.Length; i++)
-                //     {
-                //         interactionMenu.AddButton(interactions.Interactables[i]);
-                //     }
-                //     openInteractMenuEventHandler.Raise();
-                // }
+                if (collider.TryGetComponent(out Interactable interactable))
+                {
+                    if (interactionName.Value == "Inspect")
+                    {
+                        Debug.Log(interactable.Inspect());
+                    } else
+                    {
+                        Debug.Log(interactable.SkillCheck(skills.GetSkillByName(interactionName.Value)));
+                    }
+                }
             }
         }
 
@@ -104,10 +108,7 @@ namespace CounterWeight.Player
             {
                 if (collider.TryGetComponent(out Interactable interactable))
                 {
-                    for (int i = 0; i < interactable.Skills.Length; i++)
-                    {
-                        showInteractMenuEventHandler.Raise();
-                    }
+                    showInteractMenuEventHandler.Raise();
                 }
             }
         }
