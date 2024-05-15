@@ -214,6 +214,8 @@ MonoBehaviour:
   interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
   buttonPrefab: {fileID: 6339523792464898207, guid: ae16946be8b07094a8f813d68f8dff87,
     type: 3}
+  interaction: {fileID: 11400000, guid: 609fa9339d68fa94bbd232b71d606d55, type: 2}
+  interactionName: {fileID: 11400000, guid: 8b276566fda5107438465214e137ac4c, type: 2}
 --- !u!1 &75034301
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +714,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793126ea5c10888409d0cd4fc2ceca81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &535006478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8068073526183931155, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+    type: 3}
+  m_PrefabInstance: {fileID: 947192433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &535006480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535006478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25f47207c3ae0d4d99c545cd7ceecb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspectResponse: The door is locked.
+  skills:
+  - {fileID: 11400000, guid: 7cb5af8a181d94a4a9f311b71cada165, type: 2}
+  interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
+--- !u!65 &535006483
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535006478}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.014014659, y: 0.0042042406, z: 0.020000003}
+  m_Center: {x: -0.006677755, y: -0.000000007762475, z: 0.010004995}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +939,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8068073526183931155, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d9a90ad6340f9ab468cdee2084f2cc10,
         type: 3}
       propertyPath: m_Name
@@ -904,6 +954,14 @@ PrefabInstance:
     - {fileID: -8700617353114198275, guid: d9a90ad6340f9ab468cdee2084f2cc10, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 535006483}
+    - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 535006480}
     - targetCorrespondingSourceObject: {fileID: -8114006901350506661, guid: d9a90ad6340f9ab468cdee2084f2cc10,
         type: 3}
       insertIndex: -1
@@ -1097,8 +1155,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.12628807, y: 0.12679344, z: 0.16813244}
-  m_Center: {x: -0.005456279, y: -0.0045693205, z: 0.08425789}
+  m_Size: {x: 0.0012628806, y: 0.0012679345, z: 0.0016813243}
+  m_Center: {x: -0.00005456278, y: -0.000045693196, z: 0.0008425789}
 --- !u!114 &1173076757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,9 +1169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25f47207c3ae0d4d99c545cd7ceecb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inspectResponse: 
-  skills:
-  - {fileID: 11400000, guid: 236c697437a6a95459bdd828ebab0659, type: 2}
+  inspectResponse: The picture frame doesn't contain a picture.
+  skills: []
   interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
 --- !u!1 &1593788580
 GameObject:
@@ -1126,6 +1183,7 @@ GameObject:
   - component: {fileID: 1593788581}
   - component: {fileID: 1593788582}
   - component: {fileID: 1593788583}
+  - component: {fileID: 1593788584}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1172,6 +1230,7 @@ MonoBehaviour:
     type: 2}
   hideInteractPromptEventHandler: {fileID: 11400000, guid: 6217a0ada760613438f3e9c877ffc8de,
     type: 2}
+  interactionName: {fileID: 11400000, guid: 8b276566fda5107438465214e137ac4c, type: 2}
 --- !u!114 &1593788583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,6 +1245,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skills:
   - {fileID: 11400000, guid: 1eb5b19f1413bdc41b16dc3d7d17405c, type: 2}
+  - {fileID: 11400000, guid: dbb7379339a22cd41a394a190006bd5e, type: 2}
+--- !u!114 &1593788584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593788580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b8bb5211bab7945871c2aeaa4cbd68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 609fa9339d68fa94bbd232b71d606d55, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1593788582}
+        m_TargetAssemblyTypeName: CounterWeight.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnInteractable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1721617693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,8 +1433,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.37145597, y: 0.37145594, z: 0.3060735}
-  m_Center: {x: 2.0268402e-24, y: -0.00000003651231, z: 0.15314375}
+  m_Size: {x: 0.0037145596, y: 0.0037145594, z: 0.003060735}
+  m_Center: {x: 2.02684e-26, y: -3.651231e-10, z: 0.0015314374}
 --- !u!114 &1762217135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1359,9 +1447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25f47207c3ae0d4d99c545cd7ceecb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inspectResponse: 
-  skills:
-  - {fileID: 11400000, guid: 38ec6a93e027ef14c85157db0f0f088d, type: 2}
+  inspectResponse: The pot is empty.
+  skills: []
   interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
 --- !u!1 &2135354691
 GameObject:

@@ -44,5 +44,10 @@ namespace CounterWeight.InteractionSystem
             }
             return false;
         }
+
+        public void SetInspectResponse(string newResponse)
+        {
+            inspectResponse = newResponse;
+        }
     }
 }
