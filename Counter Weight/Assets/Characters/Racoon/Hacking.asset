@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e5703c7f602cc4ba91a16dc0add67d, type: 3}
   m_Name: Hacking
   m_EditorClassIdentifier: 
-  skillName: Hacking
-  skillValue: 2
+  skillName: 

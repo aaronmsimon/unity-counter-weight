@@ -4,7 +4,7 @@ namespace CounterWeight.InteractionSystem
 {
     public class Door : MonoBehaviour
     {
-        [SerializeField] private bool locked = true;
+        // [SerializeField] private bool locked = true;
         
     }
 }

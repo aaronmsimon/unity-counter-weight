@@ -1,3 +1,4 @@
+using CounterWeight.InteractionSystem;
 using UnityEngine;
 
 namespace CounterWeight.Characters
@@ -6,9 +7,7 @@ namespace CounterWeight.Characters
     public class Skill : ScriptableObject
     {
         [SerializeField] private string skillName;
-        [SerializeField] private int skillValue;
 
         public string SkillName { get { return skillName; } }
-        public int SkillValue { get { return skillValue; } }
     }
 }

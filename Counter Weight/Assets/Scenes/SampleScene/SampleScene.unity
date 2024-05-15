@@ -720,22 +720,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 947192433}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &535006480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535006478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25f47207c3ae0d4d99c545cd7ceecb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inspectResponse: The door is locked.
-  skills:
-  - {fileID: 11400000, guid: 7cb5af8a181d94a4a9f311b71cada165, type: 2}
-  interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
 --- !u!65 &535006483
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -757,6 +741,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.014014659, y: 0.0042042406, z: 0.020000003}
   m_Center: {x: -0.006677755, y: -0.000000007762475, z: 0.010004995}
+--- !u!114 &535006487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535006478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25f47207c3ae0d4d99c545cd7ceecb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredSkill:
+    skill: {fileID: 11400000, guid: 64d62e964d89c9a47beaec30ca993485, type: 2}
+    level: 1
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,23 +960,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: d9a90ad6340f9ab468cdee2084f2cc10,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 535006480}
+      addedObject: {fileID: 535006487}
     - targetCorrespondingSourceObject: {fileID: -8114006901350506661, guid: d9a90ad6340f9ab468cdee2084f2cc10,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1173076756}
-    - targetCorrespondingSourceObject: {fileID: -8114006901350506661, guid: d9a90ad6340f9ab468cdee2084f2cc10,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1173076757}
     - targetCorrespondingSourceObject: {fileID: -2800599746514691067, guid: d9a90ad6340f9ab468cdee2084f2cc10,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1762217128}
-    - targetCorrespondingSourceObject: {fileID: -2800599746514691067, guid: d9a90ad6340f9ab468cdee2084f2cc10,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1762217135}
   m_SourcePrefab: {fileID: 100100000, guid: d9a90ad6340f9ab468cdee2084f2cc10, type: 3}
 --- !u!1 &1026116087
 GameObject:
@@ -1157,21 +1148,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0012628806, y: 0.0012679345, z: 0.0016813243}
   m_Center: {x: -0.00005456278, y: -0.000045693196, z: 0.0008425789}
---- !u!114 &1173076757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173076751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25f47207c3ae0d4d99c545cd7ceecb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inspectResponse: The picture frame doesn't contain a picture.
-  skills: []
-  interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
 --- !u!1 &1593788580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,10 +1158,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1593788581}
   - component: {fileID: 1593788582}
-  - component: {fileID: 1593788583}
-  - component: {fileID: 1593788584}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1216,64 +1190,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1593788580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44a482e9b38aa1047a60b9da072d40c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4967eec8a3a791f408860b989537f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  interactRange: 0.75
-  showInteractRange: 0
-  showInteractMenuEventHandler: {fileID: 11400000, guid: e495261bc7d4dfb4f825c8994c0ca70e,
-    type: 2}
-  hideInteractMenuEventHandler: {fileID: 11400000, guid: d2ca87fb2b32e804bb4fe8ccc99a32b9,
-    type: 2}
-  showInteractPromptEventHandler: {fileID: 11400000, guid: b34d1510b3f896e448fa0871cae4a883,
-    type: 2}
-  hideInteractPromptEventHandler: {fileID: 11400000, guid: 6217a0ada760613438f3e9c877ffc8de,
-    type: 2}
-  interactionName: {fileID: 11400000, guid: 8b276566fda5107438465214e137ac4c, type: 2}
---- !u!114 &1593788583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593788580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e8668b86ab57147bdce1ff9b555721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   skills:
-  - {fileID: 11400000, guid: 1eb5b19f1413bdc41b16dc3d7d17405c, type: 2}
-  - {fileID: 11400000, guid: dbb7379339a22cd41a394a190006bd5e, type: 2}
---- !u!114 &1593788584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1593788580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b8bb5211bab7945871c2aeaa4cbd68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 609fa9339d68fa94bbd232b71d606d55, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1593788582}
-        m_TargetAssemblyTypeName: CounterWeight.Player.PlayerController, Assembly-CSharp
-        m_MethodName: OnInteractable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  - skill: {fileID: 11400000, guid: 64d62e964d89c9a47beaec30ca993485, type: 2}
+    level: 4
+  interactRange: 0.75
 --- !u!1 &1721617693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,21 +1359,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0037145596, y: 0.0037145594, z: 0.003060735}
   m_Center: {x: 2.02684e-26, y: -3.651231e-10, z: 0.0015314374}
---- !u!114 &1762217135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762217124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25f47207c3ae0d4d99c545cd7ceecb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inspectResponse: The pot is empty.
-  skills: []
-  interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
 --- !u!1 &2135354691
 GameObject:
   m_ObjectHideFlags: 0
