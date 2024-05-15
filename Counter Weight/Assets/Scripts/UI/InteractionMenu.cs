@@ -2,17 +2,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using CounterWeight.InteractionSystem;
-using RoboRyanTron.Unite2017.Variables;
-using RoboRyanTron.Unite2017.Events;
+using CounterWeight.Characters;
 
 namespace CounterWeight.UI
 {
     public class InteractionMenu : MonoBehaviour
     {
-        // [SerializeField] private InteractionsList interactionsList;
+        [Header("Menu Graphics")]
         [SerializeField] private Button buttonPrefab;
-        [SerializeField] private GameEvent interaction;
-        [SerializeField] private StringVariable interactionName;
+
+        [Header("Source Data")]
+        [SerializeField] private CurrentEnvironmentObject currentEnvironmentObject;
+        [SerializeField] private Character TEMPORARY_character;
 
         private RectTransform rectTransform;
 
@@ -33,13 +34,16 @@ namespace CounterWeight.UI
 
         private void PopulateInteractions()
         {
-            // foreach (string interactionText in interactionsList.interactionNames)
-            // {
-            //     TextMeshProUGUI label = buttonPrefab.GetComponentInChildren<TextMeshProUGUI>();
-            //     label.text = interactionText;
-            //     Button button = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, this.transform);
-            //     button.onClick.AddListener(() => {interactionName.Value = interactionText;interaction.Raise();});
-            // }
+            TextMeshProUGUI label = buttonPrefab.GetComponentInChildren<TextMeshProUGUI>();
+            Button button;
+            // Inspect
+            label.text = "Inspect";
+            button = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, this.transform);
+            button.onClick.AddListener(currentEnvironmentObject.environmentObject.Inspect);
+            // Required Skill
+            label.text = currentEnvironmentObject.environmentObject.requiredSkill.SkillName.Value;
+            button = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, this.transform);
+            button.onClick.AddListener(() => currentEnvironmentObject.environmentObject.Interact(TEMPORARY_character));
         }
 
         private void ClearInteractions()

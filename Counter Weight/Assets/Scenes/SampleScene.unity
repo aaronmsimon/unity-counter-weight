@@ -123,6 +123,43 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &41894755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 41894756}
+  m_Layer: 5
+  m_Name: Prompt Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &41894756
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41894755}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 928842041}
+  - {fileID: 1721617694}
+  m_Father: {fileID: 411119668}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &71448278
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 71448279}
   - component: {fileID: 71448280}
-  - component: {fileID: 71448282}
+  - component: {fileID: 71448284}
   - component: {fileID: 71448283}
   m_Layer: 5
   m_Name: Interact Menu
@@ -187,18 +224,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &71448282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71448278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 793126ea5c10888409d0cd4fc2ceca81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &71448283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,8 +238,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 6339523792464898207, guid: ae16946be8b07094a8f813d68f8dff87,
     type: 3}
-  interaction: {fileID: 11400000, guid: 609fa9339d68fa94bbd232b71d606d55, type: 2}
-  interactionName: {fileID: 11400000, guid: 8b276566fda5107438465214e137ac4c, type: 2}
+  currentEnvironmentObject: {fileID: 11400000, guid: 2e49a601e317a8c47af51305c31ee613,
+    type: 2}
+  TEMPORARY_character: {fileID: 1593788582}
+--- !u!114 &71448284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71448278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793126ea5c10888409d0cd4fc2ceca81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &75034301
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &411119668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -692,8 +730,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 928842041}
-  - {fileID: 1721617694}
+  - {fileID: 41894756}
   m_Father: {fileID: 163764117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -710,9 +747,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 411119667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 793126ea5c10888409d0cd4fc2ceca81, type: 3}
+  m_Script: {fileID: 11500000, guid: 30ebe7f5ac025cf4cbe6dfba9f03205f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prompt: {fileID: 41894755}
+  currentEnvironmentObject: {fileID: 11400000, guid: 2e49a601e317a8c47af51305c31ee613,
+    type: 2}
 --- !u!1 &535006478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8068073526183931155, guid: d9a90ad6340f9ab468cdee2084f2cc10,
@@ -830,12 +870,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928842040}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 411119668}
+  m_Father: {fileID: 41894756}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -981,8 +1021,6 @@ GameObject:
   - component: {fileID: 1026116088}
   - component: {fileID: 1026116089}
   - component: {fileID: 1026116092}
-  - component: {fileID: 1026116091}
-  - component: {fileID: 1026116090}
   m_Layer: 5
   m_Name: UI Listeners
   m_TagString: Untagged
@@ -1025,63 +1063,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 71448282}
-        m_TargetAssemblyTypeName: CounterWeight.ShowHide, Assembly-CSharp
-        m_MethodName: Show
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1026116090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026116087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b8bb5211bab7945871c2aeaa4cbd68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 6217a0ada760613438f3e9c877ffc8de, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 411119669}
-        m_TargetAssemblyTypeName: CounterWeight.ShowHide, Assembly-CSharp
-        m_MethodName: Hide
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1026116091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026116087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75b8bb5211bab7945871c2aeaa4cbd68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b34d1510b3f896e448fa0871cae4a883, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 411119669}
+      - m_Target: {fileID: 71448284}
         m_TargetAssemblyTypeName: CounterWeight.ShowHide, Assembly-CSharp
         m_MethodName: Show
         m_Mode: 1
@@ -1109,7 +1091,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 71448282}
+      - m_Target: {fileID: 71448284}
         m_TargetAssemblyTypeName: CounterWeight.ShowHide, Assembly-CSharp
         m_MethodName: Hide
         m_Mode: 1
@@ -1200,6 +1182,11 @@ MonoBehaviour:
   - SkillName: {fileID: 11400000, guid: 64d62e964d89c9a47beaec30ca993485, type: 2}
     SkillLevel: 4
   interactRange: 0.75
+  showInteractRange: 0
+  currentEnvironmentObject: {fileID: 11400000, guid: 2e49a601e317a8c47af51305c31ee613,
+    type: 2}
+  hideInteractMenu: {fileID: 11400000, guid: d2ca87fb2b32e804bb4fe8ccc99a32b9, type: 2}
+  showInteractMenu: {fileID: 11400000, guid: e495261bc7d4dfb4f825c8994c0ca70e, type: 2}
 --- !u!1 &1721617693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1217,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 411119668}
+  m_Father: {fileID: 41894756}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

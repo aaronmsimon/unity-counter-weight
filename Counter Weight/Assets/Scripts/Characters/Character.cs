@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using CounterWeight.InteractionSystem;
+using RoboRyanTron.Unite2017.Events;
 
 namespace CounterWeight.Characters
 {
@@ -15,6 +16,11 @@ namespace CounterWeight.Characters
         [SerializeField] Dictionary<Skill, int> testlist = new Dictionary<Skill, int>();
         [SerializeField] private float interactRange;
         [SerializeField] private bool showInteractRange;
+        [SerializeField] private CurrentEnvironmentObject currentEnvironmentObject;
+
+        [Header("Interact Menu Events")]
+        [SerializeField] private GameEvent hideInteractMenu;
+        [SerializeField] private GameEvent showInteractMenu;
 
         private PlayerControls playerControls;
 
@@ -27,19 +33,20 @@ namespace CounterWeight.Characters
         {
             playerControls.Enable();
 
-            playerControls.Gameplay.Interact.performed += test;
+            playerControls.Gameplay.Interact.performed += Interact;
         }
 
         private void OnDisable()
         {
             playerControls.Disable();
 
-            playerControls.Gameplay.Interact.performed -= test;
+            playerControls.Gameplay.Interact.performed -= Interact;
         }
 
         private void Update()
         {
             Move();
+            CheckForInteractables();
         }
 
         private void Move()
@@ -91,21 +98,20 @@ namespace CounterWeight.Characters
             return null;
         }
 
-        // private void CheckForInteractables()
-        // {
-        //     Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
-        //     foreach (Collider collider in colliders)
-        //     {
-        //         if (collider.TryGetComponent(out Interactable interactable))
-        //         {
-        //             interactable.UpdateInteractionsList();
-        //             showInteractPromptEventHandler.Raise();
-        //             return;
-        //         }
-        //     }            
-        //     hideInteractPromptEventHandler.Raise();
-        //     hideInteractMenuEventHandler.Raise();
-        // }
+        private void CheckForInteractables()
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.TryGetComponent(out EnvironmentObject environmentObject))
+                {
+                    currentEnvironmentObject.environmentObject = environmentObject;
+                    return;
+                }
+            }
+            currentEnvironmentObject.environmentObject = null;
+            hideInteractMenu.Raise();
+        }
 
         // public void OnInteractable() {
         //     Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
@@ -124,16 +130,12 @@ namespace CounterWeight.Characters
         //     }
         // }
 
-        // private void Interact(InputAction.CallbackContext context) {
-        //     Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
-        //     foreach (Collider collider in colliders)
-        //     {
-        //         if (collider.TryGetComponent(out Interactable interactable))
-        //         {
-        //             showInteractMenuEventHandler.Raise();
-        //         }
-        //     }
-        // }
+        private void Interact(InputAction.CallbackContext context) {
+            if (currentEnvironmentObject.environmentObject != null)
+            {
+                showInteractMenu.Raise();
+            }
+        }
 
         private void OnDrawGizmos() {
             Gizmos.color = Color.red;
@@ -141,19 +143,6 @@ namespace CounterWeight.Characters
             {
                 Gizmos.DrawWireSphere(transform.position, interactRange);
             }
-        }
-
-        private void test(InputAction.CallbackContext context)
-        {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
-            foreach (Collider collider in colliders)
-            {
-                if (collider.TryGetComponent(out IInteractable interactable))
-                {
-                    interactable.Interact(this);
-                    return;
-                }
-            }            
         }
     }
 }
