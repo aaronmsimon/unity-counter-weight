@@ -1,13 +1,20 @@
-using CounterWeight.InteractionSystem;
-using UnityEngine;
+using System;
+using CounterWeight.Characters;
+using RoboRyanTron.Unite2017.Variables;
 
-namespace CounterWeight.Characters
+namespace CounterWeight.InteractionSystem
 {
-    [CreateAssetMenu(fileName = "New Skill", menuName = "Characters/Skill")]
-    public class Skill : ScriptableObject
+    [Serializable]
+    public class Skill
     {
-        [SerializeField] private string skillName;
+        public StringVariable SkillName;
+        public int SkillLevel;
 
-        public string SkillName { get { return skillName; } }
+        public bool CheckSkill(Character character)
+        {
+            // Perform skill check logic
+            // For example, check if the character's skill level is sufficient
+            return character.GetSkillLevel(this) >= SkillLevel;
+        }
     }
 }

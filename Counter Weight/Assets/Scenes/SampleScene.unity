@@ -211,7 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e9d8bf991b324791ed6d6620690c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionsList: {fileID: 11400000, guid: d58df341bf97b6345bf10447df29484d, type: 2}
   buttonPrefab: {fileID: 6339523792464898207, guid: ae16946be8b07094a8f813d68f8dff87,
     type: 3}
   interaction: {fileID: 11400000, guid: 609fa9339d68fa94bbd232b71d606d55, type: 2}
@@ -750,12 +749,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 535006478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25f47207c3ae0d4d99c545cd7ceecb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f7d21f6eeecaa1479c163289d00a1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inspectResponse: The door is locked.
   requiredSkill:
-    skill: {fileID: 11400000, guid: 64d62e964d89c9a47beaec30ca993485, type: 2}
-    level: 1
+    SkillName: {fileID: 11400000, guid: 64d62e964d89c9a47beaec30ca993485, type: 2}
+    SkillLevel: 1
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,8 +1195,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   skills:
-  - skill: {fileID: 11400000, guid: 64d62e964d89c9a47beaec30ca993485, type: 2}
-    level: 4
+  - SkillName: {fileID: 11400000, guid: 236c697437a6a95459bdd828ebab0659, type: 2}
+    SkillLevel: 1
+  - SkillName: {fileID: 11400000, guid: 64d62e964d89c9a47beaec30ca993485, type: 2}
+    SkillLevel: 4
   interactRange: 0.75
 --- !u!1 &1721617693
 GameObject:

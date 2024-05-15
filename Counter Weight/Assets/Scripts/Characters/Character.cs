@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using CounterWeight.InteractionSystem;
-using System.Linq;
 
 namespace CounterWeight.Characters
 {
@@ -11,9 +10,11 @@ namespace CounterWeight.Characters
         [Header("Player Controls")]
         [SerializeField] private float moveSpeed;
 
-        [Header("Skills")]
-        public List<SkillLevel> skills = new List<SkillLevel>();
+        [Header("Interactions")]
+        public List<Skill> skills = new List<Skill>();
+        [SerializeField] Dictionary<Skill, int> testlist = new Dictionary<Skill, int>();
         [SerializeField] private float interactRange;
+        [SerializeField] private bool showInteractRange;
 
         private PlayerControls playerControls;
 
@@ -32,6 +33,8 @@ namespace CounterWeight.Characters
         private void OnDisable()
         {
             playerControls.Disable();
+
+            playerControls.Gameplay.Interact.performed -= test;
         }
 
         private void Update()
@@ -59,11 +62,33 @@ namespace CounterWeight.Characters
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
         }
 
-        public int GetSkillLevel(SkillLevel skill)
+        public int GetSkillLevel(Skill querySkill)
         {
             // Retrieve skill level for the specified skill
             // You might implement this based on your game's logic
-            return skills.Where(i => i.skill).FirstOrDefault().level;
+            foreach (Skill skill in skills)
+            {
+                // SkillName is actually the SO, so comparing is accurate, but using the instance in case another SO is made and compared by mistake
+                if (skill.SkillName.GetInstanceID() == querySkill.SkillName.GetInstanceID())
+                {
+                    return skill.SkillLevel;
+                }
+            }
+            return -1;
+        }
+
+        public Skill GetSkill(Skill querySkill)
+        {
+            // Retrieve skill level for the specified skill
+            // You might implement this based on your game's logic
+            foreach (Skill skill in skills)
+            {
+                if (skill.SkillName == querySkill.SkillName)
+                {
+                    return skill;
+                }
+            }
+            return null;
         }
 
         // private void CheckForInteractables()
@@ -110,20 +135,20 @@ namespace CounterWeight.Characters
         //     }
         // }
 
-        // private void OnDrawGizmos() {
-        //     Gizmos.color = Color.red;
-        //     if (showInteractRange)
-        //     {
-        //         Gizmos.DrawWireSphere(transform.position, interactRange);
-        //     }
-        // }
+        private void OnDrawGizmos() {
+            Gizmos.color = Color.red;
+            if (showInteractRange)
+            {
+                Gizmos.DrawWireSphere(transform.position, interactRange);
+            }
+        }
 
         private void test(InputAction.CallbackContext context)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
             foreach (Collider collider in colliders)
             {
-                if (collider.TryGetComponent(out Interactable interactable))
+                if (collider.TryGetComponent(out IInteractable interactable))
                 {
                     interactable.Interact(this);
                     return;
