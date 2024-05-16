@@ -16,7 +16,7 @@ namespace CounterWeight.Characters
         [SerializeField] Dictionary<Skill, int> testlist = new Dictionary<Skill, int>();
         [SerializeField] private float interactRange;
         [SerializeField] private bool showInteractRange;
-        [SerializeField] private CurrentEnvironmentObject currentEnvironmentObject;
+        [SerializeField] private CurrentInteractable currentInteractable;
 
         [Header("Interact Menu Events")]
         [SerializeField] private GameEvent hideInteractMenu;
@@ -103,13 +103,13 @@ namespace CounterWeight.Characters
             Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
             foreach (Collider collider in colliders)
             {
-                if (collider.TryGetComponent(out EnvironmentObject environmentObject))
+                if (collider.TryGetComponent(out IInteractable interactable))
                 {
-                    currentEnvironmentObject.environmentObject = environmentObject;
+                    currentInteractable.interactable = interactable;
                     return;
                 }
             }
-            currentEnvironmentObject.environmentObject = null;
+            currentInteractable.interactable = null;
             hideInteractMenu.Raise();
         }
 
@@ -131,7 +131,7 @@ namespace CounterWeight.Characters
         // }
 
         private void Interact(InputAction.CallbackContext context) {
-            if (currentEnvironmentObject.environmentObject != null)
+            if (currentInteractable.interactable != null)
             {
                 showInteractMenu.Raise();
             }

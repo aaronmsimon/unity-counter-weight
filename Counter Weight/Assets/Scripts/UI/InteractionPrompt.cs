@@ -9,11 +9,11 @@ namespace CounterWeight.UI
         [SerializeField] private GameObject prompt;
 
         [Header("Source Data")]
-        [SerializeField] private CurrentEnvironmentObject currentEnvironmentObject;
+        [SerializeField] private CurrentInteractable currentInteractable;
 
         private void Update()
         {
-            prompt.SetActive(currentEnvironmentObject.environmentObject != null);
+            prompt.SetActive(currentInteractable.interactable != null);
         }
     }
 }
