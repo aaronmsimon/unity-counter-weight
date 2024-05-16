@@ -19,6 +19,8 @@ namespace CounterWeight.Characters
         [SerializeField] private CurrentInteractable currentInteractable;
 
         [Header("Interact Menu Events")]
+        [SerializeField] private GameEvent hideInteractPrompt;
+        [SerializeField] private GameEvent showInteractPrompt;
         [SerializeField] private GameEvent hideInteractMenu;
         [SerializeField] private GameEvent showInteractMenu;
 
@@ -106,29 +108,14 @@ namespace CounterWeight.Characters
                 if (collider.TryGetComponent(out IInteractable interactable))
                 {
                     currentInteractable.interactable = interactable;
+                    showInteractPrompt.Raise();
                     return;
                 }
             }
             currentInteractable.interactable = null;
+            hideInteractPrompt.Raise();
             hideInteractMenu.Raise();
         }
-
-        // public void OnInteractable() {
-        //     Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
-        //     foreach (Collider collider in colliders)
-        //     {
-        //         if (collider.TryGetComponent(out Interactable interactable))
-        //         {
-        //             if (interactionName.Value == "Inspect")
-        //             {
-        //                 Debug.Log(interactable.Inspect());
-        //             } else
-        //             {
-        //                 Debug.Log(interactable.SkillCheck(skills.GetSkillByName(interactionName.Value)));
-        //             }
-        //         }
-        //     }
-        // }
 
         private void Interact(InputAction.CallbackContext context) {
             if (currentInteractable.interactable != null)

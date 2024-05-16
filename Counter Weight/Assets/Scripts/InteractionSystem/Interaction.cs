@@ -1,6 +1,5 @@
 using System;
 using RoboRyanTron.Unite2017.Variables;
-using CounterWeight.Variables;
 
 namespace CounterWeight.InteractionSystem
 {
@@ -8,12 +7,15 @@ namespace CounterWeight.InteractionSystem
     public class Interaction
     {
         public StringVariable interactionName;
-        public BoolVariable prerequisite;
-        public BoolVariable completion;
+        public Requirement[] prerequisite;
+        public Requirement[] completion;
 
         public void CompleteInteraction()
         {
-            prerequisite.Value = true;
+            foreach (Requirement req in completion)
+            {
+                req.requirementVar.Value = req.requiredBool;
+            }
         }
     }
 }

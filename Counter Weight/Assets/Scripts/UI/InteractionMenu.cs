@@ -3,13 +3,16 @@ using UnityEngine.UI;
 using TMPro;
 using CounterWeight.InteractionSystem;
 using CounterWeight.Characters;
+using RoboRyanTron.Unite2017.Events;
+using CounterWeight.Variables;
 
 namespace CounterWeight.UI
 {
     public class InteractionMenu : MonoBehaviour
     {
-        [Header("Menu Graphics")]
+        [Header("Menu Handling")]
         [SerializeField] private Button buttonPrefab;
+        [SerializeField] private GameEvent closeMenu;
 
         [Header("Source Data")]
         [SerializeField] private CurrentInteractable currentInteractable;
@@ -34,14 +37,36 @@ namespace CounterWeight.UI
 
         private void PopulateInteractions()
         {
+            bool addInteraction;
             foreach (Interaction interaction in currentInteractable.interactable.GetInteractions())
             {
-                if (interaction.prerequisite.Value)
+                addInteraction = true;
+                foreach (Requirement prereq in interaction.prerequisite)
                 {
+                    if (prereq.requirementVar.Value != prereq.requiredBool)
+                    {
+                        addInteraction = false;
+                        break;
+                    }
+                }
+                foreach (Requirement req in interaction.completion)
+                {
+                    if (req.requirementVar.Value == req.requiredBool)
+                    {
+                        addInteraction = false;
+                        break;
+                    }
+                }
+                if (addInteraction)
+                {
+                    // All prerequisites met
                     TextMeshProUGUI label = buttonPrefab.GetComponentInChildren<TextMeshProUGUI>();
                     label.text = interaction.interactionName.Value;
                     Button button = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, this.transform);
-                    button.onClick.AddListener(() => { currentInteractable.interactable.Interact(interaction.interactionName.Value); });
+                    button.onClick.AddListener(() => {
+                        currentInteractable.interactable.Interact(interaction.interactionName.Value);
+                        closeMenu.Raise();
+                    });
                 }
             }
         }
