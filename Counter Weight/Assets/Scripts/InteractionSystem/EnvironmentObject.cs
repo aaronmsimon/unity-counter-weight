@@ -1,36 +1,27 @@
-// using UnityEngine;
-// using CounterWeight.Characters;
+using System.Reflection;
+using UnityEngine;
 
-// namespace CounterWeight.InteractionSystem
-// {
-//     public class EnvironmentObject : MonoBehaviour, IInteractable
-//     {
-//         public string inspectResponse;
-//         public Skill requiredSkill;
+namespace CounterWeight.InteractionSystem
+{
+    public class EnvironmentObject : MonoBehaviour, IInteractable
+    {
+        [SerializeField] private Interaction[] interactions;
 
-//         public virtual void Inspect()
-//         {
-//             Debug.Log(inspectResponse);
-//         }
-
-//         public virtual void Interact(Character character)
-//         {
-//         }
-
-//         public Skill GetRequiredSkill()
-//         {
-//             return requiredSkill;
-//         }
-
-//         public bool SkillCheck(Character character)
-//         {
-//             // Check if the character passes the required skill check
-//             return requiredSkill.CheckSkill(character);
-//         }
-
-//         public Interaction[] GetInteractions()
-//         {
-//             throw new System.NotImplementedException();
-//         }
-//     }
-// }
+        public Interaction[] GetInteractions()
+        {
+            return interactions;
+        }
+        public void Interact(string functionName)
+        {
+            MethodInfo methodInfo = this.GetType().GetMethod(functionName);
+            if (methodInfo != null)
+            {
+                methodInfo.Invoke(this, null);
+            }
+            else
+            {
+                Debug.LogError("Method '" + functionName + "' not found on " + this);
+            }
+        }
+    }
+}

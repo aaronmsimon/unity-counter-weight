@@ -1,33 +1,17 @@
-using System.Reflection;
 using UnityEngine;
 
 namespace CounterWeight.InteractionSystem
 {
-    public class Door : MonoBehaviour, IInteractable
+    public class Door : EnvironmentObject
     {
-        [SerializeField] private Interaction[] interactions;
-
-        public Interaction[] GetInteractions()
-        {
-            return interactions;
-        }
-
-        public void Interact(string functionName)
-        {
-            MethodInfo methodInfo = this.GetType().GetMethod(functionName);
-            if (methodInfo != null)
-            {
-                methodInfo.Invoke(this, null);
-            }
-            else
-            {
-                Debug.LogError("Method '" + functionName + "' not found on " + this);
-            }
-        }
-
         public void Inspect()
         {
             Debug.Log("inspect");
+        }
+
+        public void LockPick()
+        {
+            Debug.Log("picked!");
         }
     }
 }

@@ -238,7 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 6339523792464898207, guid: ae16946be8b07094a8f813d68f8dff87,
     type: 3}
-  currentEnvironmentObject: {fileID: 11400000, guid: 2e49a601e317a8c47af51305c31ee613,
+  currentInteractable: {fileID: 11400000, guid: 2e49a601e317a8c47af51305c31ee613,
     type: 2}
   TEMPORARY_character: {fileID: 1593788582}
 --- !u!114 &71448284
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: {fileID: 41894755}
-  currentEnvironmentObject: {fileID: 11400000, guid: 2e49a601e317a8c47af51305c31ee613,
+  currentInteractable: {fileID: 11400000, guid: 2e49a601e317a8c47af51305c31ee613,
     type: 2}
 --- !u!1 &535006478 stripped
 GameObject:
@@ -780,7 +780,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.014014659, y: 0.0042042406, z: 0.020000003}
   m_Center: {x: -0.006677755, y: -0.000000007762475, z: 0.010004995}
---- !u!114 &535006487
+--- !u!114 &535006485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -792,10 +792,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f7d21f6eeecaa1479c163289d00a1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inspectResponse: The door is locked.
-  requiredSkill:
-    SkillName: {fileID: 11400000, guid: 64d62e964d89c9a47beaec30ca993485, type: 2}
-    SkillLevel: 1
+  interactions:
+  - interactionName: {fileID: 11400000, guid: 242b5657d1b244746828829d922c6cec, type: 2}
+    prerequisite: {fileID: 11400000, guid: 5b54ea40492464c449aa3ccd11cfdcaf, type: 2}
+    completion: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1000,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: d9a90ad6340f9ab468cdee2084f2cc10,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 535006487}
+      addedObject: {fileID: 535006485}
     - targetCorrespondingSourceObject: {fileID: -8114006901350506661, guid: d9a90ad6340f9ab468cdee2084f2cc10,
         type: 3}
       insertIndex: -1
@@ -1183,7 +1183,7 @@ MonoBehaviour:
     SkillLevel: 4
   interactRange: 0.75
   showInteractRange: 0
-  currentEnvironmentObject: {fileID: 11400000, guid: 2e49a601e317a8c47af51305c31ee613,
+  currentInteractable: {fileID: 11400000, guid: 2e49a601e317a8c47af51305c31ee613,
     type: 2}
   hideInteractMenu: {fileID: 11400000, guid: d2ca87fb2b32e804bb4fe8ccc99a32b9, type: 2}
   showInteractMenu: {fileID: 11400000, guid: e495261bc7d4dfb4f825c8994c0ca70e, type: 2}

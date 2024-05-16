@@ -1,6 +1,6 @@
 using System;
-using CounterWeight.Variables;
 using RoboRyanTron.Unite2017.Variables;
+using CounterWeight.Variables;
 
 namespace CounterWeight.InteractionSystem
 {
