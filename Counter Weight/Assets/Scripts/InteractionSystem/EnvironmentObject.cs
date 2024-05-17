@@ -11,6 +11,7 @@ namespace CounterWeight.InteractionSystem
         {
             return interactions;
         }
+        
         public void Interact(string functionName)
         {
             MethodInfo methodInfo = this.GetType().GetMethod(functionName);

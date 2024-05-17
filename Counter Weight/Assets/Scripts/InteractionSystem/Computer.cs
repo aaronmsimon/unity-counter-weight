@@ -20,14 +20,12 @@ namespace CounterWeight.InteractionSystem
 
         public void TurnOnLights()
         {
-            Debug.Log("door opened");
             CompleteInteraction("TurnOnLights");
             roomLight.gameObject.SetActive(true);
         }
 
         public void TurnOffLights()
         {
-            Debug.Log("door closed");
             CompleteInteraction("TurnOffLights");
             roomLight.gameObject.SetActive(false);
         }
