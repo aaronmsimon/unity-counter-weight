@@ -9,6 +9,7 @@ namespace CounterWeight.InteractionSystem
         public StringVariable interactionName;
         public Requirement[] prerequisite;
         public Requirement[] completion;
+        public Skill skillCheck;
 
         public void CompleteInteraction()
         {

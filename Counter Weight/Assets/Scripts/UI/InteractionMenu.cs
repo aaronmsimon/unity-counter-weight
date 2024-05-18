@@ -5,6 +5,7 @@ using CounterWeight.InteractionSystem;
 using CounterWeight.Characters;
 using RoboRyanTron.Unite2017.Events;
 using CounterWeight.Variables;
+using System;
 
 namespace CounterWeight.UI
 {
@@ -63,8 +64,9 @@ namespace CounterWeight.UI
                     TextMeshProUGUI label = buttonPrefab.GetComponentInChildren<TextMeshProUGUI>();
                     label.text = interaction.interactionName.Value;
                     Button button = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, this.transform);
+                    object[] parameters = new object[] { TEMPORARY_character };
                     button.onClick.AddListener(() => {
-                        currentInteractable.interactable.Interact(interaction.interactionName.Value);
+                        currentInteractable.interactable.Interact(interaction, parameters);
                         closeMenu.Raise();
                     });
                 }

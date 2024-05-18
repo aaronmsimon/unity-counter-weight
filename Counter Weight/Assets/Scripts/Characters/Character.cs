@@ -71,21 +71,6 @@ namespace CounterWeight.Characters
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
         }
 
-        public int GetSkillLevel(Skill querySkill)
-        {
-            // Retrieve skill level for the specified skill
-            // You might implement this based on your game's logic
-            foreach (Skill skill in skills)
-            {
-                // SkillName is actually the SO, so comparing is accurate, but using the instance in case another SO is made and compared by mistake
-                if (skill.SkillName.GetInstanceID() == querySkill.SkillName.GetInstanceID())
-                {
-                    return skill.SkillLevel;
-                }
-            }
-            return -1;
-        }
-
         public Skill GetSkill(Skill querySkill)
         {
             // Retrieve skill level for the specified skill
