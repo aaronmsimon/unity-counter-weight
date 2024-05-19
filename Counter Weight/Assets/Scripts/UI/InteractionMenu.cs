@@ -4,8 +4,6 @@ using TMPro;
 using CounterWeight.InteractionSystem;
 using CounterWeight.Characters;
 using RoboRyanTron.Unite2017.Events;
-using CounterWeight.Variables;
-using System;
 
 namespace CounterWeight.UI
 {

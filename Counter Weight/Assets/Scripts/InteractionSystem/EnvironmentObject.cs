@@ -1,7 +1,7 @@
 using System.Reflection;
 using UnityEngine;
 using CounterWeight.Characters;
-using UnityEngine.Rendering.Universal;
+using RoboRyanTron.Unite2017.Events;
 
 namespace CounterWeight.InteractionSystem
 {
@@ -12,6 +12,7 @@ namespace CounterWeight.InteractionSystem
     public class EnvironmentObject : MonoBehaviour, IInteractable
     {
         [SerializeField] private Interaction[] interactions;
+        [SerializeField] private GameEvent showSkillProgress;
 
         public Interaction[] GetInteractions()
         {
@@ -36,6 +37,7 @@ namespace CounterWeight.InteractionSystem
                         Debug.Log("failed skill check for " + interactionSkill.SkillName.Value);
                         return;
                     }
+                    showSkillProgress.Raise();
                 }
                 methodInfo.Invoke(this, null);
             }

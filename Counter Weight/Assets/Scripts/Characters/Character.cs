@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using CounterWeight.InteractionSystem;
 using RoboRyanTron.Unite2017.Events;
+using RoboRyanTron.Unite2017.Variables;
 
 namespace CounterWeight.Characters
 {
@@ -17,6 +18,7 @@ namespace CounterWeight.Characters
         [SerializeField] private float interactRange;
         [SerializeField] private bool showInteractRange;
         [SerializeField] private CurrentInteractable currentInteractable;
+        [SerializeField] private FloatVariable skillTime;
 
         [Header("Interact Menu Events")]
         [SerializeField] private GameEvent hideInteractPrompt;
@@ -83,6 +85,11 @@ namespace CounterWeight.Characters
                 }
             }
             return null;
+        }
+
+        public float GetSkillTime()
+        {
+            return skillTime.Value;
         }
 
         private void CheckForInteractables()

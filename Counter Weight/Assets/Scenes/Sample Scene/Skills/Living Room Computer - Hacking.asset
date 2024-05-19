@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce42a1a9d8889fc4d81e96fe7e9ab17c, type: 3}
   m_Name: Living Room Computer - Hacking
   m_EditorClassIdentifier: 
-  SkillName: {fileID: 0}
-  SkillLevel: 0
+  SkillName: {fileID: 11400000, guid: be7eb047ba093bf4a9090794e9d03040, type: 2}
+  SkillLevel: 1

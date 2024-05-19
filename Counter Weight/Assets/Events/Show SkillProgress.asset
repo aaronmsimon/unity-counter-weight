@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38dd9a516522ffd4694d3af39c2362ac, type: 3}
-  m_Name: Hacking (String)
+  m_Script: {fileID: 11500000, guid: 5070106b79b8280468638e2e672aab40, type: 3}
+  m_Name: Show SkillProgress
   m_EditorClassIdentifier: 
-  value: Hacking
