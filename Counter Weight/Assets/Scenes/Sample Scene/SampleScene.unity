@@ -403,7 +403,7 @@ RectTransform:
   - {fileID: 1026116088}
   - {fileID: 411119668}
   - {fileID: 71448279}
-  - {fileID: 1035917834}
+  - {fileID: 545466616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -509,6 +509,7 @@ MonoBehaviour:
     prerequisite: []
     completion: []
     skillCheck: {fileID: 0}
+  showSkillProgress: {fileID: 0}
   inspectResponse: The potted plant is just filled with dirt. No plant.
 --- !u!65 &171341520
 BoxCollider:
@@ -580,6 +581,7 @@ MonoBehaviour:
     - requirementVar: {fileID: 11400000, guid: 1839b42921a37484fa7c3c03960d3509, type: 2}
       requiredBool: 0
     skillCheck: {fileID: 0}
+  showSkillProgress: {fileID: 11400000, guid: d322a84e9ba221e418b51e3df83b29c7, type: 2}
   roomLight: {fileID: 1025344827}
 --- !u!65 &220993043
 BoxCollider:
@@ -602,6 +604,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0045475867, y: 0.00028061698, z: 0.0028493672}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &248165144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8343248219658952724, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+    type: 3}
+  m_PrefabInstance: {fileID: 947192433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &248165148
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248165144}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5551418225153903260, guid: d9a90ad6340f9ab468cdee2084f2cc10, type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1055,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45.515, y: -90, z: -90}
+--- !u!1 &545466615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 545466616}
+  - component: {fileID: 545466617}
+  m_Layer: 5
+  m_Name: SkillProgress
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &545466616
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545466615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1035917834}
+  m_Father: {fileID: 163764117}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &545466617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545466615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c355b183e7218e48a9fdaf03c778e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 1035917833}
+  maximum: 5
+  current: 2.9188693
+  mask: {fileID: 1871500550}
+  seconds: {fileID: 11400000, guid: 2357573ca2782354f9cc02f5983cdd9e, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,6 +1318,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3c40564b97e062e4e9afa1f50bedc8de, type: 2}
     - target: {fileID: -2357884022608881519, guid: d9a90ad6340f9ab468cdee2084f2cc10,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2357884022608881519, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 91b482afdd77d0d4f8e5321f9fe183a0, type: 2}
@@ -1316,6 +1405,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 171341517}
+    - targetCorrespondingSourceObject: {fileID: 8343248219658952724, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 248165148}
   m_SourcePrefab: {fileID: 100100000, guid: d9a90ad6340f9ab468cdee2084f2cc10, type: 3}
 --- !u!1 &1025344826
 GameObject:
@@ -1448,6 +1541,7 @@ GameObject:
   - component: {fileID: 1026116092}
   - component: {fileID: 1026116093}
   - component: {fileID: 1026116094}
+  - component: {fileID: 1026116095}
   m_Layer: 5
   m_Name: UI Listeners
   m_TagString: Untagged
@@ -1586,6 +1680,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1026116095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026116087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b8bb5211bab7945871c2aeaa4cbd68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: d322a84e9ba221e418b51e3df83b29c7, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 545466617}
+        m_TargetAssemblyTypeName: CounterWeight.UI.ProgressBar, Assembly-CSharp
+        m_MethodName: RunFillProgressBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1035917833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,14 +1719,13 @@ GameObject:
   - component: {fileID: 1035917834}
   - component: {fileID: 1035917837}
   - component: {fileID: 1035917836}
-  - component: {fileID: 1035917835}
   m_Layer: 5
-  m_Name: SkillProgress
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1035917834
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1612,36 +1733,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035917833}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1871500549}
-  m_Father: {fileID: 163764117}
+  m_Father: {fileID: 545466616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1035917835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035917833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c355b183e7218e48a9fdaf03c778e82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maximum: 100
-  current: 25
-  mask: {fileID: 1871500550}
-  fill: {fileID: 0}
-  fillColor: {r: 0.105121255, g: 0.093362406, b: 0.093362406, a: 0}
 --- !u!114 &1035917836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,6 +1833,7 @@ MonoBehaviour:
     - requirementVar: {fileID: 11400000, guid: d91d08f162ce8124183e95539f386f0e, type: 2}
       requiredBool: 0
     skillCheck: {fileID: 0}
+  showSkillProgress: {fileID: 11400000, guid: d322a84e9ba221e418b51e3df83b29c7, type: 2}
 --- !u!65 &1544041222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1803,6 +1908,7 @@ MonoBehaviour:
   showInteractRange: 0
   currentInteractable: {fileID: 11400000, guid: 2e49a601e317a8c47af51305c31ee613,
     type: 2}
+  skillTime: {fileID: 11400000, guid: 2357573ca2782354f9cc02f5983cdd9e, type: 2}
   hideInteractPrompt: {fileID: 11400000, guid: 74da1870fe14ac441af9845b1fbcae0a, type: 2}
   showInteractPrompt: {fileID: 11400000, guid: c593fbcf6289dec4288de06fcca2710c, type: 2}
   hideInteractMenu: {fileID: 11400000, guid: d2ca87fb2b32e804bb4fe8ccc99a32b9, type: 2}
@@ -2004,7 +2110,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.25
+  m_FillAmount: 0.5171072
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0

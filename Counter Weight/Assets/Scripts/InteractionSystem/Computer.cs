@@ -1,4 +1,5 @@
 using System.Linq;
+using CounterWeight.Variables;
 using UnityEngine;
 
 namespace CounterWeight.InteractionSystem
@@ -6,6 +7,21 @@ namespace CounterWeight.InteractionSystem
     public class Computer : EnvironmentObject
     {
         [SerializeField] private Light roomLight;
+
+        [Header("Scene Setup")]
+        [SerializeField] private BoolVariable lightsOn;
+
+        private void Start()
+        {
+            if (lightsOn.Value)
+            {
+                TurnOnLights();
+            }
+            else
+            {
+                TurnOffLights();
+            }
+        }
 
         public void Inspect()
         {
