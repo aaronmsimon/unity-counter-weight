@@ -14,6 +14,8 @@ namespace CounterWeight.InteractionSystem
         [SerializeField] private Interaction[] interactions;
         [SerializeField] private GameEvent showSkillProgress;
 
+        protected string inspectReponse;
+
         public Interaction[] GetInteractions()
         {
             return interactions;

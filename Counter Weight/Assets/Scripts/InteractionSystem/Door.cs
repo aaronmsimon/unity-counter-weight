@@ -23,7 +23,6 @@ namespace CounterWeight.InteractionSystem
 
         public void Inspect()
         {
-            // mark if open/closed after unlock and then just locked before that?
             Debug.Log("inspect");
         }
 
@@ -35,18 +34,15 @@ namespace CounterWeight.InteractionSystem
 
         public void Open()
         {
-            Debug.Log("door opened");
+            inspectReponse = "The door is open";
             CompleteInteraction("Open");
-            // transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, 80f, transform.eulerAngles.z));
             transform.eulerAngles = new Vector3(270f, 0f, 80f);
         }
 
         public void Close()
         {
-            // Debug.Log($"x: {transform.eulerAngles.x} y: {transform.eulerAngles.y} z: {transform.eulerAngles.z} ");
-            Debug.Log("door closed");
+            inspectReponse = "The door is closed";
             CompleteInteraction("Close");
-            // transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, 180f, transform.eulerAngles.y));
             transform.eulerAngles = new Vector3(270f, 0f, 180f);
         }
 

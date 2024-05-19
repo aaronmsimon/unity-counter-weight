@@ -12,7 +12,9 @@ namespace CounterWeight.InteractionSystem
         [SerializeField] private BoolVariable lightsOn;
 
         private void Start()
-        {
+        {            
+            inspectReponse = "There is a computer on the desk with controls to various systems.";
+            
             if (lightsOn.Value)
             {
                 TurnOnLights();

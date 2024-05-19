@@ -583,6 +583,7 @@ MonoBehaviour:
     skillCheck: {fileID: 0}
   showSkillProgress: {fileID: 11400000, guid: d322a84e9ba221e418b51e3df83b29c7, type: 2}
   roomLight: {fileID: 1025344827}
+  lightsOn: {fileID: 11400000, guid: 1839b42921a37484fa7c3c03960d3509, type: 2}
 --- !u!65 &220993043
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1109,6 +1110,83 @@ MonoBehaviour:
   current: 2.9188693
   mask: {fileID: 1871500550}
   seconds: {fileID: 11400000, guid: 2357573ca2782354f9cc02f5983cdd9e, type: 2}
+--- !u!1 &733274613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 733274615}
+  - component: {fileID: 733274614}
+  m_Layer: 0
+  m_Name: temp door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &733274614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733274613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f7d21f6eeecaa1479c163289d00a1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactions:
+  - interactionName: {fileID: 11400000, guid: 242b5657d1b244746828829d922c6cec, type: 2}
+    prerequisite: []
+    completion: []
+    skillCheck: {fileID: 0}
+  - interactionName: {fileID: 11400000, guid: 72ad93353c3d4ea4dbdf3808e9c8eb6f, type: 2}
+    prerequisite:
+    - requirementVar: {fileID: 11400000, guid: 7403e1fabd0b1de458dfc5e173a40c76, type: 2}
+      requiredBool: 0
+    completion:
+    - requirementVar: {fileID: 11400000, guid: 7403e1fabd0b1de458dfc5e173a40c76, type: 2}
+      requiredBool: 1
+    skillCheck: {fileID: 11400000, guid: d4b2d9484eb3f084fb23b293b79f2bde, type: 2}
+  - interactionName: {fileID: 11400000, guid: b1231d626284f3b41b015e3470961d00, type: 2}
+    prerequisite:
+    - requirementVar: {fileID: 11400000, guid: 7403e1fabd0b1de458dfc5e173a40c76, type: 2}
+      requiredBool: 1
+    - requirementVar: {fileID: 11400000, guid: d91d08f162ce8124183e95539f386f0e, type: 2}
+      requiredBool: 0
+    completion:
+    - requirementVar: {fileID: 11400000, guid: d91d08f162ce8124183e95539f386f0e, type: 2}
+      requiredBool: 1
+    skillCheck: {fileID: 0}
+  - interactionName: {fileID: 11400000, guid: c4c8dfc089442e44580eb667ea767b6e, type: 2}
+    prerequisite:
+    - requirementVar: {fileID: 11400000, guid: d91d08f162ce8124183e95539f386f0e, type: 2}
+      requiredBool: 1
+    completion:
+    - requirementVar: {fileID: 11400000, guid: d91d08f162ce8124183e95539f386f0e, type: 2}
+      requiredBool: 0
+    skillCheck: {fileID: 0}
+  showSkillProgress: {fileID: 11400000, guid: d322a84e9ba221e418b51e3df83b29c7, type: 2}
+  doorOpened: {fileID: 11400000, guid: d91d08f162ce8124183e95539f386f0e, type: 2}
+--- !u!4 &733274615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733274613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.465825, y: 1.8835212, z: -1.5327116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,6 +1409,36 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 91b482afdd77d0d4f8e5321f9fe183a0, type: 2}
+    - target: {fileID: -1950733119399844177, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1950733119399844177, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1950733119399844177, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -1950733119399844177, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -1950733119399844177, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -1950733119399844177, guid: d9a90ad6340f9ab468cdee2084f2cc10,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: -1887979041894156435, guid: d9a90ad6340f9ab468cdee2084f2cc10,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1784,6 +1892,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035917833}
   m_CullTransparentMesh: 1
+--- !u!1 &1448489832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1448489834}
+  - component: {fileID: 1448489833}
+  m_Layer: 0
+  m_Name: temp monitor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1448489833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448489832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f075f61819fd4ac4c936ba6d9a5ccfd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactions:
+  - interactionName: {fileID: 11400000, guid: 242b5657d1b244746828829d922c6cec, type: 2}
+    prerequisite: []
+    completion: []
+    skillCheck: {fileID: 0}
+  - interactionName: {fileID: 11400000, guid: 7f63318b3a204ac47bde2a40376efbb7, type: 2}
+    prerequisite:
+    - requirementVar: {fileID: 11400000, guid: b22547d110baef64baf7f7e8f24f51cc, type: 2}
+      requiredBool: 0
+    completion:
+    - requirementVar: {fileID: 11400000, guid: b22547d110baef64baf7f7e8f24f51cc, type: 2}
+      requiredBool: 1
+    skillCheck: {fileID: 11400000, guid: 74762194f1e2d434a98212c2ffee1b95, type: 2}
+  - interactionName: {fileID: 11400000, guid: cc593dce81d5ec34cad446939afa8d79, type: 2}
+    prerequisite:
+    - requirementVar: {fileID: 11400000, guid: b22547d110baef64baf7f7e8f24f51cc, type: 2}
+      requiredBool: 1
+    - requirementVar: {fileID: 11400000, guid: 1839b42921a37484fa7c3c03960d3509, type: 2}
+      requiredBool: 0
+    completion:
+    - requirementVar: {fileID: 11400000, guid: 1839b42921a37484fa7c3c03960d3509, type: 2}
+      requiredBool: 1
+    skillCheck: {fileID: 0}
+  - interactionName: {fileID: 11400000, guid: 5ba102f4176481341959671185b311ad, type: 2}
+    prerequisite:
+    - requirementVar: {fileID: 11400000, guid: 1839b42921a37484fa7c3c03960d3509, type: 2}
+      requiredBool: 1
+    completion:
+    - requirementVar: {fileID: 11400000, guid: 1839b42921a37484fa7c3c03960d3509, type: 2}
+      requiredBool: 0
+    skillCheck: {fileID: 0}
+  showSkillProgress: {fileID: 11400000, guid: d322a84e9ba221e418b51e3df83b29c7, type: 2}
+  roomLight: {fileID: 1025344827}
+  lightsOn: {fileID: 0}
+--- !u!4 &1448489834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448489832}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.465825, y: 1.8835212, z: -1.5327116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1544041217 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8068073526183931155, guid: d9a90ad6340f9ab468cdee2084f2cc10,
@@ -1834,6 +2020,7 @@ MonoBehaviour:
       requiredBool: 0
     skillCheck: {fileID: 0}
   showSkillProgress: {fileID: 11400000, guid: d322a84e9ba221e418b51e3df83b29c7, type: 2}
+  doorOpened: {fileID: 11400000, guid: d91d08f162ce8124183e95539f386f0e, type: 2}
 --- !u!65 &1544041222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2220,3 +2407,5 @@ SceneRoots:
   - {fileID: 947192433}
   - {fileID: 163764117}
   - {fileID: 75034304}
+  - {fileID: 733274615}
+  - {fileID: 1448489834}
