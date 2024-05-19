@@ -26,6 +26,12 @@ namespace CounterWeight.InteractionSystem
             Debug.Log("inspect");
         }
 
+        public void UnlockWithKey()
+        {
+            Debug.Log("unlocked");
+            CompleteInteraction("UnlockWithKey");
+        }
+
         public void LockPick()
         {
             Debug.Log("picked!");

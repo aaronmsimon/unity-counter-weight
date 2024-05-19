@@ -30,6 +30,12 @@ namespace CounterWeight.InteractionSystem
             Debug.Log("inspect");
         }
 
+        public void EnterPassword()
+        {
+            Debug.Log("password entered");
+            CompleteInteraction("EnterPassword");
+        }
+
         public void Hack()
         {
             Debug.Log("hacked!");
