@@ -55,8 +55,6 @@ namespace CounterWeight.Characters
         {
             GetMoveInput();
             CalculateMoveDirection();
-
-            // CheckForInteractables();
         }
 
         private void FixedUpdate()
@@ -103,35 +101,10 @@ namespace CounterWeight.Characters
             return skillTime.Value;
         }
 
-        private void CheckForInteractables()
-        {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, interactRange);
-            foreach (Collider collider in colliders)
-            {
-                if (collider.TryGetComponent(out IInteractable interactable))
-                {
-                    currentInteractable.interactable = interactable;
-                    showInteractPrompt.Raise();
-                    return;
-                }
-            }
-            currentInteractable.interactable = null;
-            hideInteractPrompt.Raise();
-            hideInteractMenu.Raise();
-        }
-
         private void Interact(InputAction.CallbackContext context) {
             if (currentInteractable.interactable != null)
             {
                 showInteractMenu.Raise();
-            }
-        }
-
-        private void OnDrawGizmos() {
-            Gizmos.color = Color.red;
-            if (showInteractRange)
-            {
-                Gizmos.DrawWireSphere(transform.position, interactRange);
             }
         }
     }
