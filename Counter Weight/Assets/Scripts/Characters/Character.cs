@@ -11,6 +11,7 @@ namespace CounterWeight.Characters
     {
         [Header("Player Controls")]
         [SerializeField] private float moveSpeed;
+        [SerializeField] private float collisionDistance;
 
         [Header("Interactions")]
         public List<Skill> skills = new List<Skill>();
@@ -25,6 +26,9 @@ namespace CounterWeight.Characters
         [SerializeField] private GameEvent showInteractPrompt;
         [SerializeField] private GameEvent hideInteractMenu;
         [SerializeField] private GameEvent showInteractMenu;
+
+        private Vector2 moveInput;
+        private Vector3 moveDirection;
 
         private PlayerControls playerControls;
 
@@ -49,28 +53,35 @@ namespace CounterWeight.Characters
 
         private void Update()
         {
-            Move();
+            GetMoveInput();
+            CalculateMoveDirection();
+
             CheckForInteractables();
+        }
+
+        private void FixedUpdate()
+        {
+            Move();
         }
 
         private void Move()
         {
-            // Get input for movement
-            Vector2 moveInput = playerControls.Gameplay.Move.ReadValue<Vector2>();
-            float horizontalInput = moveInput.x;
-            float verticalInput = moveInput.y;
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+        }
 
+        private void GetMoveInput()
+        {
+            moveInput = playerControls.Gameplay.Move.ReadValue<Vector2>();
+        }
+
+        private void CalculateMoveDirection()
+        {
             // Calculate movement direction relative to camera
-            Vector3 cameraForward = Camera.main.transform.forward;
-            Vector3 cameraRight = Camera.main.transform.right;
+            Vector3 cameraForward = Camera.main.transform.forward.normalized;
+            Vector3 cameraRight = Camera.main.transform.right.normalized;
             cameraForward.y = 0f;
             cameraRight.y = 0f;
-            cameraForward.Normalize();
-            cameraRight.Normalize();
-            Vector3 moveDirection = cameraForward * verticalInput + cameraRight * horizontalInput;
-
-            // Apply movement
-            transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+            moveDirection = cameraForward * moveInput.y + cameraRight * moveInput.x;
         }
 
         public Skill GetSkill(Skill querySkill)
@@ -122,6 +133,10 @@ namespace CounterWeight.Characters
             {
                 Gizmos.DrawWireSphere(transform.position, interactRange);
             }
+
+            // Gizmos.DrawLine(transform.position, transform.position + moveDirection * collisionDistance);
+            // Gizmos.DrawWireSphere(transform.position, collisionDistance);
+            // Gizmos.DrawWireCube(transform.position, new Vector3(collisionDistance, transform.position.y, collisionDistance));
         }
     }
 }
