@@ -56,7 +56,7 @@ namespace CounterWeight.Characters
             GetMoveInput();
             CalculateMoveDirection();
 
-            CheckForInteractables();
+            // CheckForInteractables();
         }
 
         private void FixedUpdate()
@@ -133,10 +133,6 @@ namespace CounterWeight.Characters
             {
                 Gizmos.DrawWireSphere(transform.position, interactRange);
             }
-
-            // Gizmos.DrawLine(transform.position, transform.position + moveDirection * collisionDistance);
-            // Gizmos.DrawWireSphere(transform.position, collisionDistance);
-            // Gizmos.DrawWireCube(transform.position, new Vector3(collisionDistance, transform.position.y, collisionDistance));
         }
     }
 }

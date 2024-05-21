@@ -2,6 +2,7 @@ using System.Reflection;
 using UnityEngine;
 using CounterWeight.Characters;
 using RoboRyanTron.Unite2017.Events;
+using RoboRyanTron.Unite2017.Variables;
 
 namespace CounterWeight.InteractionSystem
 {
@@ -15,6 +16,13 @@ namespace CounterWeight.InteractionSystem
         [SerializeField] private GameEvent showSkillProgress;
 
         protected string inspectReponse;
+
+        private SpriteRenderer sr;
+
+        private void Awake()
+        {
+            sr = transform.Find("Prompt").GetComponent<SpriteRenderer>();
+        }
 
         public Interaction[] GetInteractions()
         {
@@ -46,6 +54,22 @@ namespace CounterWeight.InteractionSystem
             else
             {
                 Debug.LogError("Method '" + functionName + "' not found on " + this);
+            }
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            if (other.TryGetComponent<Character>(out Character character))
+            {
+                Resources.Load<CurrentInteractable>("CurrentInteractable").interactable = this;
+                sr.enabled = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other) {
+            if (other.TryGetComponent<Character>(out Character character))
+            {
+                Resources.Load<CurrentInteractable>("CurrentInteractable").interactable = null;
+                sr.enabled = false;
             }
         }
     }
