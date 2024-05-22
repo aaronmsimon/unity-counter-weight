@@ -589,8 +589,6 @@ MonoBehaviour:
     completion: []
     skillCheck: {fileID: 0}
   showSkillProgress: {fileID: 0}
-  speaker: {fileID: 0}
-  message: {fileID: 0}
   inspectResponse: The potted plant is just filled with dirt. No plant.
 --- !u!65 &171341520
 BoxCollider:
@@ -743,8 +741,6 @@ MonoBehaviour:
       requiredBool: 0
     skillCheck: {fileID: 0}
   showSkillProgress: {fileID: 11400000, guid: d322a84e9ba221e418b51e3df83b29c7, type: 2}
-  speaker: {fileID: 11400000, guid: 85502392896210b4380cd73ef805a234, type: 2}
-  message: {fileID: 11400000, guid: 6478484c751935a4992ce74fca756f5e, type: 2}
   roomLight: {fileID: 1025344827}
   lightsOn: {fileID: 11400000, guid: 1839b42921a37484fa7c3c03960d3509, type: 2}
 --- !u!64 &248165148
@@ -1516,6 +1512,7 @@ MonoBehaviour:
   message: {fileID: 11400000, guid: 6478484c751935a4992ce74fca756f5e, type: 2}
   speakerUI: {fileID: 1558843795}
   messageUI: {fileID: 1587566969}
+  messageContainer: {fileID: 1447976123}
 --- !u!1 &969592540
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,18 +2045,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1447976125}
-        m_TargetAssemblyTypeName: CounterWeight.ShowHide, Assembly-CSharp
-        m_MethodName: Show
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1026116097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2067,7 +2052,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026116087}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75b8bb5211bab7945871c2aeaa4cbd68, type: 3}
   m_Name: 
@@ -2394,8 +2379,6 @@ MonoBehaviour:
       requiredBool: 0
     skillCheck: {fileID: 0}
   showSkillProgress: {fileID: 11400000, guid: d322a84e9ba221e418b51e3df83b29c7, type: 2}
-  speaker: {fileID: 0}
-  message: {fileID: 0}
   doorOpened: {fileID: 11400000, guid: d91d08f162ce8124183e95539f386f0e, type: 2}
 --- !u!65 &1544041222
 BoxCollider:
@@ -4396,8 +4379,6 @@ MonoBehaviour:
     completion: []
     skillCheck: {fileID: 0}
   showSkillProgress: {fileID: 0}
-  speaker: {fileID: 0}
-  message: {fileID: 0}
   inspectResponse: This painting is beautiful
 --- !u!1 &9145171589359047972
 GameObject:

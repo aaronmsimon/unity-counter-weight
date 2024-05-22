@@ -1,4 +1,5 @@
 using System.Collections;
+using RoboRyanTron.Unite2017.Events;
 using RoboRyanTron.Unite2017.Variables;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ namespace CounterWeight.UI
         [SerializeField] private float current;
         [SerializeField] private Image mask;
         [SerializeField] private FloatVariable seconds;
+        [SerializeField] private GameEvent showMessage;
 
         private void Update()
         {
@@ -41,6 +43,8 @@ namespace CounterWeight.UI
                 yield return null;
             }
             background.SetActive(false);
+
+            showMessage.Raise();
         }
     }
 }

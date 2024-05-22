@@ -15,6 +15,8 @@ namespace CounterWeight.InteractionSystem
         [SerializeField] private Interaction[] interactions;
         [SerializeField] private GameEvent showSkillProgress;
 
+        protected StringVariable speaker;
+        protected StringVariable message;
         protected string inspectReponse;
 
         private SpriteRenderer sr;
@@ -22,6 +24,8 @@ namespace CounterWeight.InteractionSystem
         private void Awake()
         {
             sr = transform.Find("Prompt").GetComponent<SpriteRenderer>();
+            speaker = Resources.Load<StringVariable>("Speaker");
+            message = Resources.Load<StringVariable>("Message");
         }
 
         public Interaction[] GetInteractions()
@@ -35,21 +39,30 @@ namespace CounterWeight.InteractionSystem
             MethodInfo methodInfo = this.GetType().GetMethod(functionName);
             if (methodInfo != null)
             {
+                speaker.Value = this.name;
                 Character character = (Character)args[(int)EnvrionmentObjectArgs.Character];
 
-                // If character doesn't have the skill, then automatic fail
                 Skill interactionSkill = interaction.skillCheck;                
                 if (interactionSkill != null)
                 {
+                    // If character doesn't have the skill, then automatic fail
                     int characterSkill = character.GetSkill(interactionSkill) != null ? character.GetSkill(interactionSkill).SkillLevel : -1;
                     if (characterSkill <= interactionSkill.SkillLevel)
                     {
-                        Debug.Log("failed skill check for " + interactionSkill.SkillName.Value);
+                        // I should let the item present the message via callback
+                        message.Value = interactionSkill.SkillName.Value + " attempt failed.";
+                        Resources.Load<GameEvent>("Show Message").Raise();
                         return;
                     }
+                    
                     showSkillProgress.Raise();
+                    methodInfo.Invoke(this, null);
                 }
-                methodInfo.Invoke(this, null);
+                else
+                {
+                    methodInfo.Invoke(this, null);
+                    Resources.Load<GameEvent>("Show Message").Raise();
+                }
             }
             else
             {

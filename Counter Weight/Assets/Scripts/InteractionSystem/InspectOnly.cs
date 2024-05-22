@@ -8,7 +8,7 @@ namespace CounterWeight.InteractionSystem
 
         public void Inspect()
         {
-            Debug.Log(inspectResponse);
+            message.Value = inspectResponse;
         }
     }
 }

@@ -65,6 +65,7 @@ namespace CounterWeight.UI
                     object[] parameters = new object[] { TEMPORARY_character };
                     button.onClick.AddListener(() => {
                         currentInteractable.interactable.Interact(interaction, parameters);
+                        // I think this event can go away - just set the current active to false
                         closeMenu.Raise();
                     });
                 }
