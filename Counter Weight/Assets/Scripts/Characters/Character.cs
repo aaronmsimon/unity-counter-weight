@@ -31,12 +31,20 @@ namespace CounterWeight.Characters
 
         private Vector2 moveInput;
         private Vector3 moveDirection;
+        private int WALK_HASH;
 
         private PlayerControls playerControls;
+        private Animator animator;
 
         private void Awake()
         {
             playerControls = new PlayerControls();
+            animator = GetComponent<Animator>();
+        }
+
+        private void Start()
+        {
+            WALK_HASH = Animator.StringToHash("isWalking");
         }
 
         private void OnEnable()
@@ -73,6 +81,7 @@ namespace CounterWeight.Characters
         private void GetMoveInput()
         {
             moveInput = playerControls.Gameplay.Move.ReadValue<Vector2>();
+            animator.SetBool(WALK_HASH, moveInput != Vector2.zero);
         }
 
         private void CalculateMoveDirection()
