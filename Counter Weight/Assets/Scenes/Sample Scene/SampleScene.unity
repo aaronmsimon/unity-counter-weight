@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e9d8bf991b324791ed6d6620690c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterCanMove: {fileID: 11400000, guid: 2e0ff97dad1b84b48a112f20d5606052, type: 2}
   buttonPrefab: {fileID: 6339523792464898207, guid: ae16946be8b07094a8f813d68f8dff87,
     type: 3}
   closeMenu: {fileID: 11400000, guid: d2ca87fb2b32e804bb4fe8ccc99a32b9, type: 2}
@@ -2770,6 +2771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   collisionDistance: 0
+  canMove: {fileID: 0}
   skills:
   - {fileID: 11400000, guid: 236c697437a6a95459bdd828ebab0659, type: 2}
   - {fileID: 11400000, guid: f1cfd923b7de4b14bba8d6bd6867467a, type: 2}
@@ -3146,6 +3148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   collisionDistance: 0.5
+  canMove: {fileID: 11400000, guid: 2e0ff97dad1b84b48a112f20d5606052, type: 2}
   skills:
   - {fileID: 11400000, guid: 236c697437a6a95459bdd828ebab0659, type: 2}
   - {fileID: 11400000, guid: f1cfd923b7de4b14bba8d6bd6867467a, type: 2}

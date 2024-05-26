@@ -4,11 +4,14 @@ using TMPro;
 using CounterWeight.InteractionSystem;
 using CounterWeight.Characters;
 using RoboRyanTron.Unite2017.Events;
+using CounterWeight.Variables;
 
 namespace CounterWeight.UI
 {
     public class InteractionMenu : MonoBehaviour
     {
+        [SerializeField] private BoolVariable characterCanMove;
+
         [Header("Menu Handling")]
         [SerializeField] private Button buttonPrefab;
         [SerializeField] private GameEvent closeMenu;
@@ -59,6 +62,7 @@ namespace CounterWeight.UI
                 if (addInteraction)
                 {
                     // All prerequisites met
+                    characterCanMove.Value = false;
                     TextMeshProUGUI label = buttonPrefab.GetComponentInChildren<TextMeshProUGUI>();
                     label.text = interaction.interactionName.Value;
                     Button button = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, this.transform);
@@ -66,6 +70,7 @@ namespace CounterWeight.UI
                     button.onClick.AddListener(() => {
                         currentInteractable.interactable.Interact(interaction, parameters);
                         // I think this event can go away - just set the current active to false
+                        characterCanMove.Value = true;
                         closeMenu.Raise();
                     });
                 }

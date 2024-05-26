@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CounterWeight.InteractionSystem;
 using RoboRyanTron.Unite2017.Events;
 using RoboRyanTron.Unite2017.Variables;
+using CounterWeight.Variables;
 
 namespace CounterWeight.Characters
 {
@@ -12,6 +13,7 @@ namespace CounterWeight.Characters
         [Header("Player Controls")]
         [SerializeField] private float moveSpeed;
         [SerializeField] private float collisionDistance;
+        [SerializeField] private BoolVariable canMove;
 
         [Header("Interactions")]
         public List<Skill> skills = new List<Skill>();
@@ -59,6 +61,7 @@ namespace CounterWeight.Characters
 
         private void FixedUpdate()
         {
+            if (!canMove.Value) return;
             Move();
         }
 
