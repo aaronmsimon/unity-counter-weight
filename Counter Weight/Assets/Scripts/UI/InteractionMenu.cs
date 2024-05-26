@@ -5,6 +5,7 @@ using CounterWeight.InteractionSystem;
 using CounterWeight.Characters;
 using RoboRyanTron.Unite2017.Events;
 using CounterWeight.Variables;
+using UnityEngine.InputSystem;
 
 namespace CounterWeight.UI
 {
@@ -21,15 +22,20 @@ namespace CounterWeight.UI
         [SerializeField] private Character TEMPORARY_character;
 
         private RectTransform rectTransform;
+        private PlayerControls playerControls;
 
         private void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
+            playerControls = new PlayerControls();
         }
 
         private void OnEnable()
         {
             PopulateInteractions();
+
+            playerControls.Enable();
+            playerControls.UI.Cancel.performed += CloseMenu;
         }
 
         private void OnDisable()
@@ -83,6 +89,12 @@ namespace CounterWeight.UI
             {
                 DestroyImmediate(rectTransform.GetChild(i).gameObject);
             }
+        }
+
+        private void CloseMenu(InputAction.CallbackContext context)
+        {
+            characterCanMove.Value = true;
+            closeMenu.Raise();
         }
     }
 }

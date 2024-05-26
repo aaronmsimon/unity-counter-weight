@@ -40,14 +40,14 @@ namespace CounterWeight.InteractionSystem
 
         public void Open()
         {
-            inspectReponse = "The door is open";
+            message.Value = null;
             CompleteInteraction("Open");
             transform.eulerAngles = new Vector3(270f, 0f, 80f);
         }
 
         public void Close()
         {
-            inspectReponse = "The door is closed";
+            message.Value = null;
             CompleteInteraction("Close");
             transform.eulerAngles = new Vector3(270f, 0f, 180f);
         }
