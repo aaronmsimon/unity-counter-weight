@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b36c319df26eb42bc80e994b67a99e, type: 3}
   m_Name: Living Room Door - Unlocked
   m_EditorClassIdentifier: 
-  Value: 1
+  Value: 0
